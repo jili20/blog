@@ -1,5 +1,6 @@
 package com.bing.web;
 
+import com.bing.exception.NotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -28,7 +29,7 @@ public class IndexController {
 
 //    测试异常处理
 //    @GetMapping("/")
-//    public String index() {Ò
+//    public String index() {
 //        String blog = null;
 //        if (blog == null) {
 //            throw new NotFoundException("博客不存在");
