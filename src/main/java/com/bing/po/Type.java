@@ -13,7 +13,8 @@ import java.util.List;
 @Data
 @ToString
 @NoArgsConstructor
-@Entity(name = "t_type")
+@Entity
+@Table(name = "t_type")
 public class Type {
 
     @Id

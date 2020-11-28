@@ -15,7 +15,8 @@ import java.util.List;
 @Data
 @ToString
 @NoArgsConstructor
-@Entity(name = "t_blog")
+@Entity
+@Table(name = "t_blog")
 public class Blog {
     @Id
     @GeneratedValue

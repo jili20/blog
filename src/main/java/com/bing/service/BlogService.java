@@ -4,6 +4,9 @@ import com.bing.po.Blog;
 import com.bing.vo.BlogQuery;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.util.List;
+
 /**
  * @author bing  @create 2020/11/28-9:13 上午
  */
@@ -13,7 +16,13 @@ public interface BlogService {
 
     Page<Blog> listBlog(Pageable pageable,BlogQuery blog);
 
+    Page<Blog> listBlog(Pageable pageable);
+
+    Page<Blog> listBlog(String query,Pageable pageable);
+
     Blog saveBlog(Blog blog);
+
+    List<Blog> listRecommendBlogTop(Integer size);
 
     Blog updateBlog(Long id,Blog blog);
 

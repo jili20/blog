@@ -12,7 +12,8 @@ import java.util.List;
 @Data
 @ToString
 @NoArgsConstructor
-@Entity(name = "t_tag")
+@Entity
+@Table(name = "t_tag")
 public class Tag {
 
     @Id
