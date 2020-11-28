@@ -21,6 +21,8 @@ public class Blog {
     @GeneratedValue
     private Long id;
     private String title;
+    @Basic(fetch = FetchType.LAZY) // 懒加载内容
+    @Lob
     private String content;
     private String firstPicture; // 首图
     private String flag; // 标记
@@ -47,5 +49,10 @@ public class Blog {
 
     @OneToMany(mappedBy = "blog")
     private List<Comment> comments = new ArrayList<>();
+
+    @Transient
+    private String tagIds;
+
+    private String description;
 
 }
