@@ -20,11 +20,13 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 /**
  * @author bing  @create 2020/11/28-9:15 上午
  */
 @Service
 public class BlogServiceImpl implements BlogService {
+
 
     @Autowired
     private BlogRepository blogRepository;
@@ -33,6 +35,7 @@ public class BlogServiceImpl implements BlogService {
     public Blog getBlog(Long id) {
         return blogRepository.getOne(id);
     }
+
 
     @Override
     public Page<Blog> listBlog(Pageable pageable, BlogQuery blog) {
@@ -68,6 +71,7 @@ public class BlogServiceImpl implements BlogService {
         return blogRepository.save(blog);
     }
 
+    @Transactional
     @Override
     public Blog updateBlog(Long id, Blog blog) {
         Blog b = blogRepository.getOne(id);
@@ -79,6 +83,7 @@ public class BlogServiceImpl implements BlogService {
         return blogRepository.save(b);
     }
 
+    @Transactional
     @Override
     public void deleteBlog(Long id) {
         blogRepository.deleteById(id);
