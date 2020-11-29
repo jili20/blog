@@ -15,7 +15,8 @@ import java.util.List;
 @Data
 @ToString
 @NoArgsConstructor
-@Entity(name = "t_comment")
+@Entity
+@Table(name = "t_comment")
 public class Comment {
     @Id
     @GeneratedValue
@@ -27,7 +28,7 @@ public class Comment {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
 
-    @ManyToOne
+    @ManyToOne()
     private Blog blog;
 
     @OneToMany(mappedBy = "parentComment")
@@ -35,4 +36,6 @@ public class Comment {
 
     @ManyToOne
     private Comment parentComment;
+
+    private boolean adminComment;
 }

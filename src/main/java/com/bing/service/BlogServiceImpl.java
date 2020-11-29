@@ -4,6 +4,7 @@ import com.bing.dao.BlogRepository;
 import com.bing.exception.NotFoundException;
 import com.bing.po.Blog;
 import com.bing.po.Type;
+import com.bing.util.MarkdownUtils;
 import com.bing.util.MyBeanUtils;
 import com.bing.vo.BlogQuery;
 import org.springframework.beans.BeanUtils;
@@ -37,6 +38,20 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Blog getBlog(Long id) {
         return blogRepository.getOne(id);
+    }
+
+    @Override
+    public Blog getAndConvert(Long id) {
+        Blog blog = blogRepository.getOne(id);
+        if (blog == null) {
+            throw new NotFoundException("该博客不存在");
+        }
+        Blog b = new Blog();
+        BeanUtils.copyProperties(blog,b);
+        String content = b.getContent();
+        b.setContent(MarkdownUtils.markdownToHtmlExtensions(content));
+        blogRepository.updateViews(id); // 这个方法调用一次，浏览次数+1
+        return b;
     }
 
 
